@@ -1,6 +1,7 @@
 <script setup>
 // imports
 import { ref } from 'vue';
+import noteCard from './components/noteCard.vue';
 
 // cons & vars
 const showModal = ref(false);
@@ -48,6 +49,7 @@ const addNewNote = () => {
         <h1>Notes{{ newNote }}</h1>
         <button @click="showModal = true">+</button>
       </header>
+      <noteCard />
 
       <div class="cards-container">
         <div class="card">
