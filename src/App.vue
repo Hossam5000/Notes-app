@@ -27,8 +27,6 @@ const addNewNote = () => {
 
   console.log(notes.value);
 };
-
-
 </script>
 
 <template>
