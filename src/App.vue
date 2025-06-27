@@ -7,6 +7,7 @@ import noteCard from './components/noteCard.vue';
 const showModal = ref(false);
 const newNote = ref("");
 const notes = ref([]);
+const errorMsg = ref("");
 
 // functions
 const getRandomColor = () => {
@@ -15,10 +16,14 @@ const getRandomColor = () => {
 };
 
 const addNewNote = () => {
+  if (newNote.value.length <= 9) {
+    return errorMsg.value = "Note characters should be at least 10 characters";
+  }
+
   notes.value.push({
     id: Math.floor(Math.random() * 10000000),
     text: newNote.value,
-    date: new Date(),
+    date: new Date().toLocaleDateString("en-uk"),
     backgroundColor: getRandomColor(),
   });
 
@@ -35,6 +40,7 @@ const addNewNote = () => {
     <div v-if="showModal" class="overlay">
       <div class="modal">
         <textarea name="note" id="note" v-model="newNote" cols="30" rows="10"></textarea>
+        <p class="error" v-if="errorMsg">{{ errorMsg }}</p>
         <button @click="addNewNote">add note</button>
         <button @click="showModal = false" class="close">close</button>
       </div>
@@ -44,16 +50,16 @@ const addNewNote = () => {
     <div class="container">
       <!-- HEADER -->
       <header>
-        <h1>Notes{{ newNote }}</h1>
+        <h1>Notes</h1>
         <button @click="showModal = true">+</button>
       </header>
-      <noteCard />
 
+
+      <!-- CARD CONTAINER -->
       <div class="cards-container">
-        <div class="card">
-          <p class="main-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus molestiae eaque iste
-            accusamus esse amet?</p>
-          <p class="date">04/12/2025</p>
+        <div v-for="note in notes" :key="note.id" class="card" :style="{ backgroundColor: note.backgroundColor }">
+          <p class="main-text">{{ note.text }}</p>
+          <p class="date">{{ note.date }}</p>
         </div><!--./card-->
       </div><!--./cards-container-->
     </div> <!--./container-->
@@ -93,6 +99,10 @@ main {
   padding: 30px;
 
   background-color: #fff;
+}
+
+.overlay .modal p {
+  color: red;
 }
 
 .overlay .modal button {
