@@ -1,0 +1,45 @@
+*{
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 10px;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+    height: 100vh;
+}
+
+.square{
+    position: relative;
+    width: 100px;
+    height: 100px;
+
+    background: #c102c4;
+background: linear-gradient(90deg, rgba(193, 2, 196, 1) 0%, rgba(237, 221, 83, 1) 64%);
+    border: 1px solid #000;
+    border-radius: 50%;
+
+    text-align: center;
+    line-height: 100px;
+
+    animation-name: animate;
+    animation-duration: 0.5s;
+    animation-iteration-count: initial;
+}
+
+@keyframes animate {
+    0%, 100%{
+        bottom: 0;
+    }
+
+    50%{
+        bottom: 300px;
+    }
+}
