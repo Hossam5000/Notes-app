@@ -20,9 +20,11 @@ body{
     position: relative;
     width: 100px;
     height: 100px;
+    color: #fff;
+    font-size: 40px;
 
-    background: #c102c4;
-background: linear-gradient(90deg, rgba(193, 2, 196, 1) 0%, rgba(237, 221, 83, 1) 64%);
+   background: #57C785;
+background: linear-gradient(75deg, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
     border: 1px solid #000;
     border-radius: 50%;
 
